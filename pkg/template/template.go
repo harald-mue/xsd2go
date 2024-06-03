@@ -58,7 +58,7 @@ func newTemplate(outputDir string) (*template.Template, error) {
 	defer in.Close()
 
 	tempText, err := ioutil.ReadAll(in)
-	fmt.Println(string(tempText))
+	// fmt.Println(string(tempText))
 	if err != nil {
 		return nil, err
 	}
