@@ -104,6 +104,17 @@ func (ct *ComplexType) Schema() *Schema {
 	return ct.schema
 }
 
+func (ct *ComplexType) XmlName() string {
+	return ct.Name
+}
+
+func (ct *ComplexType) Namespace() string {
+	if ct.schema == nil {
+		return ""
+	}
+	return ct.schema.TargetNamespace
+}
+
 func (ct *ComplexType) compile(sch *Schema, parentElement *Element) {
 	ct.schema = sch
 	if ct.Sequence != nil {

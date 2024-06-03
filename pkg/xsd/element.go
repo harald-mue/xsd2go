@@ -109,6 +109,13 @@ func (e *Element) XmlName() string {
 	return name
 }
 
+func (e *Element) Namespace() string {
+	if e.schema == nil {
+		return ""
+	}
+	return e.schema.TargetNamespace
+}
+
 func (e *Element) ContainsText() bool {
 	return e.typ != nil && e.typ.ContainsText()
 }

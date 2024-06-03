@@ -3,6 +3,7 @@ package template
 import (
 	"bytes"
 	"fmt"
+	"github.com/markbates/pkger"
 	"go/format"
 	"io/ioutil"
 	"os"
@@ -10,7 +11,6 @@ import (
 	"text/template"
 
 	"github.com/harald-mue/xsd2go/pkg/xsd"
-	"github.com/markbates/pkger"
 )
 
 func GenerateTypes(schema *xsd.Schema, outputDir string) error {
@@ -58,6 +58,7 @@ func newTemplate(outputDir string) (*template.Template, error) {
 	defer in.Close()
 
 	tempText, err := ioutil.ReadAll(in)
+	fmt.Println(string(tempText))
 	if err != nil {
 		return nil, err
 	}

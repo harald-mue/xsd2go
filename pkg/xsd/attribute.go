@@ -81,6 +81,13 @@ func (a *Attribute) XmlName() string {
 	return a.Name
 }
 
+func (a *Attribute) Namespace() string {
+	if a.schema == nil {
+		return ""
+	}
+	return a.schema.TargetNamespace
+}
+
 func (a *Attribute) optional() bool {
 	return a.Use == "optional"
 }
