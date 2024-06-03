@@ -15,6 +15,10 @@ type Enumeration struct {
 
 // Public Go Name of this struct item
 func (e *Enumeration) GoName() string {
+	enumName := e.Value
+	enumName = strings.Replace(enumName, "+", "plus", -1)
+	enumName = strings.Replace(enumName, "-", "minus", -1)
+
 	return strcase.ToCamel(strings.ToLower(e.Value))
 }
 
