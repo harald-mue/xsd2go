@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/gocomply/xsd2go/pkg/xsd"
+	"github.com/harald-mue/xsd2go/pkg/xsd"
 	"github.com/markbates/pkger"
 )
 

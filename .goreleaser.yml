@@ -46,7 +46,7 @@ nfpms:
 
     bindir: /usr/bin
 
-    homepage: github.com/GoComply/xsd2go
+    homepage: github.com/harald-mue/xsd2go
     license: The Unlicense
     description: Automatically generate golang xml parser based on XSD
     release: 1

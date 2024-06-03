@@ -3,8 +3,8 @@ package xsd2go
 import (
 	"fmt"
 
-	"github.com/gocomply/xsd2go/pkg/template"
-	"github.com/gocomply/xsd2go/pkg/xsd"
+	"github.com/harald-mue/xsd2go/pkg/template"
+	"github.com/harald-mue/xsd2go/pkg/xsd"
 )
 
 func Convert(xsdPath, goModule, outputDir string, xmlnsOverrides []string) error {

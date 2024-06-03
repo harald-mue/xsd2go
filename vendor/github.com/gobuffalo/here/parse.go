@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+var pathrx = regexp.MustCompile("([^:]+)(:(/.+))?")
+
 func (i Info) Parse(p string) (Path, error) {
 	p = strings.TrimSpace(p)
 	p = filepath.Clean(p)
@@ -57,7 +59,6 @@ func (i Info) build(p, pkg, name string) (Path, error) {
 		pt.Name = "/" + pt.Name
 	}
 	pt.Name = strings.TrimPrefix(pt.Name, i.Dir)
+
 	return pt, nil
 }
-
-var pathrx = regexp.MustCompile("([^:]+)(:(/.+))?")
