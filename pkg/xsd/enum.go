@@ -19,7 +19,7 @@ func (e *Enumeration) GoName() string {
 	enumName = strings.Replace(enumName, "+", "plus", -1)
 	enumName = strings.Replace(enumName, "-", "minus", -1)
 
-	return strcase.ToCamel(strings.ToLower(e.Value))
+	return strcase.ToCamel(strings.ToLower(enumName))
 }
 
 func (e *Enumeration) Modifiers() string {
