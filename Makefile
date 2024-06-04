@@ -23,6 +23,14 @@ ci-update-bundled-deps: pkger
 	$(GOBIN)/pkger -o pkg/template
 	go fmt ./pkg/template
 
+generate-test-schemas: build $(XSD_TEST_DIR)/*.xsd
+	@for xsd in $(shell ls $(XSD_TEST_DIR)/*.xsd); do \
+		./gocomply_xsd2go convert $${xsd} "" $(TEST_MODELS_DIR); \
+	done
+
+check: generate-test-schemas
+	$(GO) test -v -cover -coverpkg=./... -tags=xml_test ./tests
+
 vendor:
 	$(GO) mod tidy
 	$(GO) mod vendor
