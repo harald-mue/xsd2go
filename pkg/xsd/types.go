@@ -2,7 +2,6 @@ package xsd
 
 import (
 	"encoding/xml"
-
 	"github.com/iancoleman/strcase"
 )
 
@@ -73,11 +72,16 @@ func (ct *ComplexType) HasXmlNameAttribute() bool {
 
 func (ct *ComplexType) Elements() []Element {
 	if ct.Sequence != nil {
-		return setXmlNameAnyForSingleElements(ct.Sequence.Elements())
+		return ct.Sequence.Elements()
+		// Not sure for what exactly we need setXmlNameAnyForSingleElements
+		// but it's casuing problems for my use-cases.
+		// return setXmlNameAnyForSingleElements(ct.Sequence.Elements())
 	} else if ct.SequenceAll != nil {
-		return setXmlNameAnyForSingleElements(ct.SequenceAll.Elements())
+		return ct.SequenceAll.Elements()
+		// return setXmlNameAnyForSingleElements(ct.SequenceAll.Elements())
 	} else if ct.content != nil {
-		return setXmlNameAnyForSingleElements(ct.content.Elements())
+		return ct.content.Elements()
+		// return setXmlNameAnyForSingleElements(ct.content.Elements())
 	} else if ct.Choice != nil {
 		return ct.Choice.Elements()
 	}
