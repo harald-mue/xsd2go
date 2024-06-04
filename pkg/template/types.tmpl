@@ -13,11 +13,11 @@ import (
   type {{ .GoName }} struct {
     XMLName xml.Name `xml:"{{.Namespace}} {{.Name}}{{.Modifiers}}"`
     {{ range .Attributes }}
-        {{ .GoName }} {{.GoForeignModule}}{{.GoType}} `xml:"{{.XmlName}},{{.Modifiers}}"`
+        {{ .GoName }} {{.GoForeignModule}}{{.GoType}} `xml:"{{.Namespace}} {{.XmlName}},{{.Modifiers}}"`
     {{end }}
 
     {{ range .Elements }}
-      {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.XmlName}}{{.Modifiers}}"`
+      {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.Namespace}} {{.XmlName}}{{.Modifiers}}"`
     {{ end }}
 
     {{- if .ContainsText }}
@@ -32,14 +32,14 @@ import (
 {{range .ExportableComplexTypes }}
   type {{ .GoName }} struct {
   {{- if not .HasXmlNameAttribute }}
-    XMLName xml.Name `xml:"{{.Namespace}} {{.XmlName}}"`
+    XMLName xml.Name
   {{- end}}
   {{ range .Attributes }}
-      {{ .GoName }} {{.GoForeignModule}}{{.GoType}} `xml:"{{.XmlName}},{{.Modifiers}}"`
+      {{ .GoName }} {{.GoForeignModule}}{{.GoType}} `xml:"{{.Namespace}} {{.XmlName}},{{.Modifiers}}"`
   {{end }}
 
   {{ range .Elements }}
-    {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.XmlName}}{{.Modifiers}}"`
+    {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.Namespace}} {{.XmlName}}{{.Modifiers}}"`
   {{end}}
 
   {{- if .ContainsText }}

@@ -34,5 +34,5 @@ git clone --depth 1 https://github.com/openscap/openscap
 ## Installation
 
 ```
-go get -u -v github.com/gocomply/xsd2go/cli/gocomply_xsd2go
+go get -u -v github.com/harald-mue/xsd2go/cli/gocomply_xsd2go
 ```
